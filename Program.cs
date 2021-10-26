@@ -42,9 +42,9 @@ namespace CommandPushServer
     {
         static void Main(string[] args)
         {
-            if (args.Length == 0 || args.Length > 3)
+            if (args.Length == 0 || args.Length < 4)
             {
-                Console.WriteLine("Usage:PushServ.exe <Title> <SchedulerTime> <Times>");
+                Console.WriteLine("Usage:PushServ.exe <Title> <SchedulerTime> <Times> <Url>");
                 return;
             }
             else
@@ -78,7 +78,7 @@ namespace CommandPushServer
 
                 for (int i = 0; i < times; i++)
                 {
-                    var command = new CommandX { Id = 1, Name = args[0], Url = "www.baidu.com/index.html" };
+                    var command = new CommandX { Id = 1, Name = args[0], Url = args[3] };
 
                     pubSocket.SendT(command);
 
